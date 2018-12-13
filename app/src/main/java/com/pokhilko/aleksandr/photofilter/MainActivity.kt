@@ -1,15 +1,28 @@
 package com.pokhilko.aleksandr.photofilter
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.zhihu.matisse.Matisse
+
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        const val REQUEST_PHOTO_CODE = 111
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        savedInstanceState ?: supportFragmentManager.beginTransaction()
+                .replace(R.id.container, MainActivityFragment.newInstance())
+                .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -25,6 +38,14 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO_CODE) {
+            val returnValue = Matisse.obtainResult(data)
+            Log.d("photo path:", returnValue.get(0).toString())
         }
     }
 }

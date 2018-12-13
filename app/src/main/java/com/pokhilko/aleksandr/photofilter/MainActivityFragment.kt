@@ -1,8 +1,8 @@
 package com.pokhilko.aleksandr.photofilter
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Context
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.graphics.*
@@ -18,10 +18,13 @@ import android.util.Log
 import android.util.Size
 import android.util.SparseIntArray
 import android.view.*
+import com.zhihu.matisse.Matisse
+import com.zhihu.matisse.MimeType
 import java.io.File
 import java.util.*
 import java.util.concurrent.Semaphore
 import java.util.concurrent.TimeUnit
+
 
 /**
  * A placeholder fragment containing a simple view.
@@ -655,10 +658,13 @@ class MainActivityFragment : Fragment(), ActivityCompat.OnRequestPermissionsResu
             R.id.picture -> lockFocus()
             R.id.info -> {
                 if (activity != null) {
-                    AlertDialog.Builder(activity)
-                            .setMessage(R.string.intro_message)
-                            .setPositiveButton(android.R.string.ok, null)
-                            .show()
+                    Matisse.from(activity)
+                            .choose(MimeType.ofImage())
+                            .maxSelectable(1)
+                            .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                            .thumbnailScale(0.85f)
+                            .imageEngine(MyGlideEngine())
+                            .forResult(MainActivity.REQUEST_PHOTO_CODE)
                 }
             }
         }
