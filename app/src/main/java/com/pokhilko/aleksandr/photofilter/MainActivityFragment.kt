@@ -273,7 +273,20 @@ class MainActivityFragment : Fragment(), ActivityCompat.OnRequestPermissionsResu
                 ErrorDialog.newInstance(getString(R.string.request_permission))
                         .show(childFragmentManager, FRAGMENT_DIALOG)
             }
-        } else {
+        } else if(requestCode == REQUEST_READ_STORAGE_PERMISSION) {
+            if (grantResults.size != 1 || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                ErrorDialog.newInstance(getString(R.string.request_permission))
+                        .show(childFragmentManager, FRAGMENT_DIALOG)
+            } else {
+                Matisse.from(activity)
+                        .choose(MimeType.ofImage())
+                        .maxSelectable(1)
+                        .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                        .thumbnailScale(0.85f)
+                        .imageEngine(MyGlideEngine())
+                        .forResult(MainActivity.REQUEST_PHOTO_CODE)
+            }
+        }else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
@@ -658,13 +671,12 @@ class MainActivityFragment : Fragment(), ActivityCompat.OnRequestPermissionsResu
             R.id.picture -> lockFocus()
             R.id.info -> {
                 if (activity != null) {
-                    Matisse.from(activity)
-                            .choose(MimeType.ofImage())
-                            .maxSelectable(1)
-                            .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
-                            .thumbnailScale(0.85f)
-                            .imageEngine(MyGlideEngine())
-                            .forResult(MainActivity.REQUEST_PHOTO_CODE)
+                    if (shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)) {
+                        ConfirmationDialog().show(childFragmentManager, FRAGMENT_DIALOG)
+                    } else {
+                        requestPermissions(arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                                REQUEST_READ_STORAGE_PERMISSION)
+                    }
                 }
             }
         }
