@@ -1,4 +1,4 @@
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.utils
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -14,7 +14,7 @@ import com.zhihu.matisse.engine.ImageEngine
 /**
  * Created by Aleksandr Pokhilko on 13.12.2018
  */
-class MyGlideEngine : ImageEngine {
+class CustomGlideEngine : ImageEngine {
 
     override fun loadThumbnail(context: Context, resize: Int, placeholder: Drawable, imageView: ImageView, uri: Uri) {
         val requestOptions = RequestOptions()

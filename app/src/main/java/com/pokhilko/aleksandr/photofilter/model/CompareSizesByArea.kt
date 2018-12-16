@@ -1,4 +1,4 @@
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.model
 
 import android.util.Size
 import java.lang.Long.signum

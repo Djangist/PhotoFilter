@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.pokhilko.aleksandr.photofilter.AutoFitTextureView
+    <com.pokhilko.aleksandr.photofilter.ui.view.AutoFitTextureView
         android:id="@+id/texture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,14 +24,14 @@
             android:layout_gravity="center"
             android:text="@string/picture" />
 
-        <ImageButton
+        <Button
             android:id="@+id/info"
             android:contentDescription="@string/description_info"
-            style="@android:style/Widget.Material.Light.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|end"
             android:padding="@dimen/image_button_padding"
+            android:text="@string/gallery"
             android:src="@drawable/ic_action_info" />
 
     </FrameLayout>

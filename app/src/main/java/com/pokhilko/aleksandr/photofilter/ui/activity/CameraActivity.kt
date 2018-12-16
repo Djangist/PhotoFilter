@@ -1,16 +1,16 @@
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.ui.activity
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import com.pokhilko.aleksandr.photofilter.R
+import com.pokhilko.aleksandr.photofilter.ui.CameraFragment
 import com.zhihu.matisse.Matisse
 
 
-class MainActivity : AppCompatActivity() {
+class CameraActivity : AppCompatActivity() {
 
     companion object {
         const val REQUEST_PHOTO_CODE = 111
@@ -21,24 +21,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         savedInstanceState ?: supportFragmentManager.beginTransaction()
-                .replace(R.id.container, MainActivityFragment.newInstance())
+                .replace(R.id.container, CameraFragment.newInstance())
                 .commit()
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
     public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

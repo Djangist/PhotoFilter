@@ -1,6 +1,6 @@
 @file:JvmName("Constants")
 
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.utils
 
 /**
  * Created by Aleksandr Pokhilko on 13.12.2018

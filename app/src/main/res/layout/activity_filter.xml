@@ -3,39 +3,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/ivImage"
-        android:layout_alignParentTop="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true" />
-
-    <LinearLayout
-        android:id="@+id/llFilters"
+    <HorizontalScrollView
+        android:id="@+id/hsvFilters"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:layout_marginBottom="10dp">
 
-        <Button
-            android:id="@+id/btnFilter1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llFilters"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Color Overlay" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnFilter2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Saturation" />
+            <TextView
+                android:id="@+id/btnFilter1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Color Overlay"
+                android:background="@android:color/darker_gray"
+                android:layout_marginRight="5dp"
+                android:textSize="16sp" />
 
-        <Button
-            android:id="@+id/btnFilter3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Brightness" />
+            <TextView
+                android:id="@+id/btnFilter2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginRight="5dp"
+                android:text="Saturation"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/btnFilter3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Brightness"
+                android:background="@android:color/darker_gray"
+                android:layout_marginRight="5dp"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/btnFilter4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@android:color/darker_gray"
+                android:layout_marginRight="5dp"
+                android:text="Awe Struck"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/btnFilter5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@android:color/darker_gray"
+                android:text="NightWishper"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/hsvFilters"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

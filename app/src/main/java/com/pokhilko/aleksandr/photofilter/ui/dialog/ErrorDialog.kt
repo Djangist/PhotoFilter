@@ -1,4 +1,4 @@
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.ui.dialog
 
 import android.app.AlertDialog
 import android.app.Dialog

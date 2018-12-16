@@ -1,4 +1,4 @@
-package com.pokhilko.aleksandr.photofilter
+package com.pokhilko.aleksandr.photofilter.ui.view
 
 import android.content.Context
 import android.util.AttributeSet
