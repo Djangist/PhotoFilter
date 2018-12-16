@@ -29,7 +29,7 @@ class CameraActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_PHOTO_CODE) {
             val returnValue = Matisse.obtainResult(data)
-            Log.d("photo path:", returnValue[0].toString())
+            Log.d("filters", "photo path:"+returnValue[0].toString())
             startActivity(Intent(this, FilterActivity::class.java).apply {
                 putExtra(FilterActivity.EXTRA_PHOTO_PATH, returnValue[0].toString())
             })

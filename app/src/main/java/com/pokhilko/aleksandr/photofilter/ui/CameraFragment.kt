@@ -304,9 +304,8 @@ class CameraFragment : Fragment(), ActivityCompat.OnRequestPermissionsResultCall
     }
 
     private fun createRandomFile(): File {
-        //return File(activity!!.getExternalFilesDir(null), System.currentTimeMillis().toString()+".jpg")
-        val dir = File( Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Camera")
-        return File(dir, System.currentTimeMillis().toString()+".jpg")
+        val dir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM), "Camera")
+        return File(dir, "img"+System.currentTimeMillis().toString()+".jpeg")
     }
 
     /**
