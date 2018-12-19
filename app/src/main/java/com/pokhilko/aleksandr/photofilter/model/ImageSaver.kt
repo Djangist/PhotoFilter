@@ -12,7 +12,7 @@ import java.io.IOException
 /**
  * Saves a JPEG [Image] into the specified [File].
  */
-internal class ImageSaver(
+class ImageSaver(
         /**
          * The JPEG image
          */
@@ -21,7 +21,7 @@ internal class ImageSaver(
         /**
          * The file we save the image into.
          */
-        private val file: File
+        private val file: File?
 ) : Runnable {
 
     override fun run() {
